@@ -1,0 +1,21 @@
+plugin_blacklist:
+  # common
+  - actuator_control
+  - adsb
+  - cam_imu_sync
+  - distance_sensor
+  - extended_state
+  - ftp
+  - home_position
+  - safety_area
+  - hil
+  - landing_target
+  - altitude
+  - debug_value
+  - image_pub
+  - px4flow
+
+plugin_whitelist:
+  - vibration
+  - vision_speed_estimate
+  - wheel_odometry

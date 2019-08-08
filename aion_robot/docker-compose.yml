@@ -1,0 +1,10 @@
+version: '3'
+services:
+  ros:
+    build: .
+    devices:
+      - "/dev/ttyACM0:/dev/ttyACM0"
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    network_mode: "host"
+    environment:
+      - ROS_IP=129.22.149.199
