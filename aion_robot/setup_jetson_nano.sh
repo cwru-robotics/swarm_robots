@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+adduser "$USER" docker
 apt-get update
 apt-get upgrade -y
 apt-get install -y python-setuptools python-dev build-essential libssl-dev libffi-dev python-pip curl wget git \
