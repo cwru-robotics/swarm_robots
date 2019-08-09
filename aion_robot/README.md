@@ -46,7 +46,7 @@ don't have to run the above commands. You can also grab the
 To run, run `docker-compose up -d` from the `aion_robot` directory. Make
 sure that you [build your changes](#development-workflow) before doing
 so. Changed nodes will be automatically restarted. To stop, run
-`docker-compose down`.
+`docker-compose down`. To see logs, run `docker-compose logs -f`.
 
 # Development workflow
 **You must add yourself to the Docker group or use sudo!**
