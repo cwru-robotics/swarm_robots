@@ -71,32 +71,9 @@ local_position:
 # rc_io
 # None
 
-# setpoint_accel
-setpoint_accel:
-  send_force: false
-
-# setpoint_attitude
-setpoint_attitude:
-  reverse_thrust: true      # allow reversed thrust
-  use_quaternion: false     # enable PoseStamped topic subscriber
-  tf:
-    listen: false           # enable tf listener (disable topic subscribers)
-    frame_id: "map"
-    child_frame_id: "target_attitude"
-    rate_limit: 50.0
-
 # setpoint_raw
 setpoint_raw:
   thrust_scaling: 1.0       # specify thrust scaling (normalized, 0 to 1) for thrust (like PX4)
-
-# setpoint_position
-setpoint_position:
-  tf:
-    listen: false           # enable tf listener (disable topic subscribers)
-    frame_id: "map"
-    child_frame_id: "target_position"
-    rate_limit: 50.0
-  mav_frame: LOCAL_NED
 
 # setpoint_velocity
 setpoint_velocity:

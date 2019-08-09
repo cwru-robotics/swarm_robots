@@ -23,10 +23,10 @@ WORKDIR /catkin_ws
 
 RUN /ros_entrypoint.sh catkin_make
 
-COPY . /catkin_ws/src/aion_robot
+COPY . /catkin_ws/src/aion_control
 
 RUN /ros_entrypoint.sh catkin_make
 
 USER 0:dialout
 
-CMD [ "bash", "-c", "source /catkin_ws/devel/setup.bash && roslaunch aion_control aion.launch" ]
+CMD [ "bash", "-c", "source /catkin_ws/devel/setup.bash && roslaunch --wait aion_control aion.launch" ]

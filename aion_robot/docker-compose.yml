@@ -1,10 +1,27 @@
 version: '3'
 services:
+  roscore:
+    image: ros:melodic-robot-bionic
+    command: roscore
+    network_mode: "host"
+    environment:
+      - ROS_IP
   ros:
-    build: .
+    build: aion_control/
+    image: aion_control
     devices:
       - "/dev/ttyACM0:/dev/ttyACM0"
       - "/dev/ttyUSB0:/dev/ttyUSB0"
     network_mode: "host"
     environment:
-      - ROS_IP=129.22.149.199
+      - ROS_IP
+  realsense:
+    build: aion_realsense/
+    image: realsense_arm
+    volumes:
+      - /dev/video/
+    privileged: true
+    network_mode: "host"
+    environment:
+      - ROS_IP
+    command: ["bash", "-c", "source /catkin_ws/devel/setup.bash && roslaunch --wait realsense2_camera rs_camera.launch filters:=pointcloud"]
