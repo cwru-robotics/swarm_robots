@@ -25,10 +25,10 @@ to set up the vehicle:
 # Jetson Setup
 First, prepare the SD card. You'll need at least 32GB. Follow
 [Nvidia's guide]. Now, put this repository on the board and run
-[setup_jetson_nano.sh](setup_jetson_nano.sh) to initialize the robot. Then, reboot.
-Place this directory somewhere on the Jetson - on the boards I have set
-up, I have placed aion_robot in the home directory. Now, on your
-computer, run:
+[setup_jetson_nano.sh](setup_jetson_nano.sh) to initialize the robot.
+Then, reboot. Place this directory somewhere on the Jetson - on the
+boards I have set up, I have placed aion_robot in the home directory.
+Now, on your computer, run:
 ```bash
 docker run --rm --privileged docker/binfmt:820fdd95a9972a5308930a2bdfb8573dd4447ad3
 docker build -t realsense_arm .
@@ -41,6 +41,12 @@ Then, on the Jetson, run `docker load -i realsense_arm.tar`.
 Alternatively, if you'd like to wait a long time for the Jetson to build
 the Realsense code itself, you may run `docker-compose build`. You then
 don't have to run the above commands. You can also grab the 
+
+# Running code
+To run, run `docker-compose up -d` from the `aion_robot` directory. Make
+sure that you [build your changes](#development-workflow) before doing
+so. Changed nodes will be automatically restarted. To stop, run
+`docker-compose down`.
 
 # Development workflow
 **You must add yourself to the Docker group or use sudo!**
@@ -70,7 +76,8 @@ computer, run
 ```bash
 export ROS_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
 ```
-on the Jetson *before* running any Docker commands.
+on the Jetson *before* running any Docker commands. However, this should
+automatically run when you log in.
 
 # Other things
 If you'd like to connect another USB device, look at the `devices`
