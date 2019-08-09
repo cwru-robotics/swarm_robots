@@ -24,11 +24,10 @@ to set up the vehicle:
 
 # Jetson Setup
 First, prepare the SD card. You'll need at least 32GB. Follow
-[Nvidia's guide]. Now, put this repository on the board and run
-[setup_jetson_nano.sh](setup_jetson_nano.sh) to initialize the robot.
-Then, reboot. Place this directory somewhere on the Jetson - on the
-boards I have set up, I have placed aion_robot in the home directory.
-Now, on your computer, run:
+[Nvidia's guide]. Now, put this repository on the board - on the boards
+I have set up, I have placed aion_robot in the home directory. Run
+[`sudo ./setup_jetson_nano.sh`](setup_jetson_nano.sh) to initialize the
+robot. Then, reboot. Now, on your computer, run:
 ```bash
 docker run --rm --privileged docker/binfmt:820fdd95a9972a5308930a2bdfb8573dd4447ad3
 docker build -t realsense_arm .
