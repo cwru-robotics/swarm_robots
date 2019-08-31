@@ -4,7 +4,7 @@ rover from the initial, stock version. Follow the following instructions
 to set up the vehicle:
 1. [Pre-Operation Inspection]
 2. [Autopilot Setup]\: **IMPORTANT**: load the [parameters] from this
-   repository instead of step 2! You may need [QGroundControl] instead
+   repository instead of step 2! You may need QGroundControl instead
    of Mission Planner to upload them. Go to Parameters > Tools > Load
    from file... and select the file.
 4. [Motor Controller Setup]\: SKIP connecting encoders to the motor
@@ -50,8 +50,7 @@ sudo nmcli connection add con-name wifi type wifi ifname wlan0 save yes ssid You
 To run, run `docker-compose up -d` from the `aion_robot` directory. Make
 sure that you [build your changes](#development-workflow) before doing
 so. Changed nodes will be automatically restarted. To stop, run
-`docker-compose down`. To see logs, run `docker-compose logs -f`.
-
+`docker-compose down`. To see logs, run `docker-compose logs -f`. Once started, run `rosrun mavros mavsys mode -c GUIDED && rosrun mavros mavsafety arm` to allow movement from `/cmd_vel`.
 # Development workflow
 **You must add yourself to the Docker group or use sudo!**
 
