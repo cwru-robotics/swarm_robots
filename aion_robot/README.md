@@ -82,6 +82,10 @@ export ROS_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cu
 on the Jetson *before* running any Docker commands. However, this should
 automatically run when you log in.
 
+## Unable to publish messages from a computer
+If you are connected to both Ethernet and WiFi, run
+`export ROS_IP=YOUR_WIFI_IP_ADDRESS` *before* any ROS commands.
+
 # Other things
 If you'd like to connect another USB device, look at the `devices`
 section within [docker-compose.yml]. Also, look up its reference for
