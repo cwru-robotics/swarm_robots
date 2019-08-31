@@ -1,6 +1,12 @@
 #!/bin/bash
 
 set -e
+
+if [[ $(id -u) -ne 0 ]]; then
+  echo "Please run as root"
+  exit
+fi
+
 adduser "$USER" docker
 apt-get update
 apt-get upgrade -y
@@ -22,8 +28,19 @@ tee /etc/docker/daemon.json <<EOF
 }
 EOF
 pkill -SIGHUP dockerd
-cd ~
+cd
 [ -d librealsense ] || git clone https://github.com/IntelRealSense/librealsense
 [ -d installLibrealsense ] || git clone https://github.com/JetsonHacksNano/installLibrealsense
 cd installLibrealsense
 ./patchUbuntu.sh
+cd
+[ -d backport-iwlwifi ] || git clone https://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/backport-iwlwifi.git
+cd backport-iwlwifi
+git checkout release/core46
+make defconfig-iwlwifi-public
+make -j4
+make install
+cd
+git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+cp linux-firmware/iwlwifi-9260* /lib/firmware/
+echo "wifi.powersave = 2" > /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf

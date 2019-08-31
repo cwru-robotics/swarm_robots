@@ -17,10 +17,8 @@ to set up the vehicle:
    ![Wiring Diagram](https://docs.px4.io/v1.9.0/assets/flight_controller/cube/cube_ports_top_main.jpg)
    ![Encoder Location](http://ardupilot.org/rover/_images/wheel-encoder-pixhawk.png)
 5. [Calibration]\: Step 1 is optional. It's OK if these fail.
-5. Connect the Jetson: Short the pins on header J48 ("ADD JUMPER TO
-   DISABLE μUSB PWR") using a wire or jumper pin. Then, connect 5V and
-   ground using jumper wires to any unused pins of the MAIN OUT section
-   of the PixHawk. See the wiring diagram of step 4 for more.
+5. Connect the Jetson: Plug the MicroUSB cable into the power
+   distribution module.
 
 # Jetson Setup
 First, prepare the SD card. You'll need at least 32GB. Follow
@@ -39,7 +37,14 @@ Then, on the Jetson, run `docker load -i realsense_arm.tar`.
 
 Alternatively, if you'd like to wait a long time for the Jetson to build
 the Realsense code itself, you may run `docker-compose build`. You then
-don't have to run the above commands. You can also grab the 
+don't have to run the above commands. You can also grab the file
+`realsense_arm.tar` from another computer or Jetson, and skip running
+the first 3 commands.
+
+To connect to WiFi, run:
+```bash
+sudo nmcli connection add con-name wifi type wifi ifname wlan0 save yes ssid YourWifiName
+```
 
 # Running code
 To run, run `docker-compose up -d` from the `aion_robot` directory. Make
