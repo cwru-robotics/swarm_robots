@@ -58,7 +58,7 @@ All code should go in the `aion_control` directory. Add your nodes to
 the `aion.launch` file.
 
 First send your changes to the board, `cd` into `aion_robot`, and
-`docker build -t aion_control` from there. If you'd like to skip the 
+`docker build -t aion_control .` from there. If you'd like to skip the 
 next step, you may instead run `docker-compose build` to build both
 images.
 ## Changing the Realsense code

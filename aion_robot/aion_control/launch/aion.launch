@@ -1,4 +1,4 @@
 <launch>
     <include file="$(find aion_control)/launch/mavros.launch" />
-    <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+    <include file="$(find aion_control)/launch/rplidar.launch" />
 </launch>

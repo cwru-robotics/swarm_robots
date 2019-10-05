@@ -10,8 +10,8 @@ services:
     build: aion_control/
     image: aion_control
     devices:
-      - "/dev/ttyACM0:/dev/ttyACM0"
-      - "/dev/ttyUSB0:/dev/ttyUSB0"
+      - "/dev/ttyACM0:/dev/mavlink"
+      - "/dev/ttyUSB0:/dev/rplidar"
     network_mode: "host"
     environment:
       - ROS_IP
