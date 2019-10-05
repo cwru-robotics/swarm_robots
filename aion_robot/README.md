@@ -82,6 +82,10 @@ export ROS_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cu
 on the Jetson *before* running any Docker commands. However, this should
 automatically run when you log in.
 
+If that doesn't work, run the same command on the controlling computer,
+and verify that `$ROS_IP` is set to your WiFi IP address. If it isn't,
+set `ROS_IP` to your computer's WiFi IP address.
+
 ## Unable to publish messages from a computer
 If you are connected to both Ethernet and WiFi, run
 `export ROS_IP=YOUR_WIFI_IP_ADDRESS` *before* any ROS commands.
