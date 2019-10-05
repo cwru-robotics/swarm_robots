@@ -27,7 +27,7 @@ tee /etc/docker/daemon.json <<EOF
     "default-runtime": "nvidia"
 }
 EOF
-pkill -SIGHUP dockerd
+pkill -SIGHUP dockerd || true
 cd
 [ -d librealsense ] || git clone https://github.com/IntelRealSense/librealsense
 [ -d installLibrealsense ] || git clone https://github.com/JetsonHacksNano/installLibrealsense
