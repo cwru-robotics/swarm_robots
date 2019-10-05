@@ -43,4 +43,7 @@ make install
 cd
 git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
 cp linux-firmware/iwlwifi-9260* /lib/firmware/
-echo "wifi.powersave = 2" > /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+tee /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf <<EOF
+[connection]
+wifi.powersave = 2
+EOF
